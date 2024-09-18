@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
 import { Link } from 'react-router-dom';
+import withAuthRedirect from '../middleware/withAuthRedirect';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -57,4 +58,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withAuthRedirect(Register);

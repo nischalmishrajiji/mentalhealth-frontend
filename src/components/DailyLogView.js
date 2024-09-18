@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getDailyLogs } from '../api';
 import { useTable, useSortBy, usePagination } from 'react-table';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import guestRedirect from '../middleware/guestRedirect';
 
 const DailyLogView = () => {
   const [logs, setLogs] = useState([]);
@@ -14,7 +15,7 @@ const DailyLogView = () => {
         setLogs(response.data);
       } catch (error) {
         console.error(error);
-        alert('Failed to fetch daily logs.');
+        console.log('Failed to fetch daily logs.');
       }
     };
 
@@ -61,7 +62,6 @@ const DailyLogView = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     prepareRow,
     state: { pageIndex, pageSize },
     canPreviousPage,
@@ -153,4 +153,4 @@ const DailyLogView = () => {
   );
 };
 
-export default DailyLogView;
+export default guestRedirect(DailyLogView);

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { saveDailyLog } from '../api';
 import { useNavigate } from 'react-router-dom';
+import guestRedirect from '../middleware/guestRedirect';
 
 const DailyLogForm = () => {
   const navigate = useNavigate();
@@ -124,10 +125,10 @@ const DailyLogForm = () => {
             onChange={handleChange}
           ></textarea>
         </div>
-        <button type="submit" className="btn btn-primary col-md-2 p-2 m-auto">Save Log</button>
+        <button type="submit" className="btn btn-primary col-md-2 p-2 m-auto">Save</button>
       </form>
     </div>
   );
 };
 
-export default DailyLogForm;
+export default guestRedirect(DailyLogForm);
