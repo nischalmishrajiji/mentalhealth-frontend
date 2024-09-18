@@ -1,0 +1,48 @@
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Register from './components/Register';
+import Login from './components/Login';
+import DailyLogForm from './components/DailyLogForm';
+import DailyLogView from './components/DailyLogView';
+import Navigation from './components/Navigation';
+
+const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token')); // Check if token exists
+
+  useEffect(() => {
+    const handleStorageChange = () => {
+      // Update authentication state on local storage change
+      setIsAuthenticated(!!localStorage.getItem('token'));
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  return (
+    <Router>
+      <div>
+        <Navigation isAuthenticated={isAuthenticated} /> {/* Pass the authentication state */}
+        <Routes>
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} /> {/* Pass setter */}
+          <Route path="/daily-log" element={<DailyLogForm />} />
+          <Route path="/view-logs" element={<DailyLogView />} />
+          <Route 
+            path="/" 
+            element={
+              <div>
+                <h1>Welcome to the Mental Health App</h1>
+              </div>
+            } 
+          />
+        </Routes>
+      </div>
+    </Router>
+  );
+};
+
+export default App;
