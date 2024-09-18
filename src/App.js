@@ -6,6 +6,9 @@ import Login from './components/Login';
 import DailyLogForm from './components/DailyLogForm';
 import DailyLogView from './components/DailyLogView';
 import Navigation from './components/Navigation';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token')); // Check if token exists

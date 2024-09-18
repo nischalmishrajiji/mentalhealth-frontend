@@ -1,6 +1,7 @@
 // src/components/Register.js
 import React, { useState } from 'react';
 import { registerUser } from '../api';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -18,12 +19,41 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Register</h2>
-      <input type="text" placeholder="Username" onChange={(e) => setUsername(e.target.value)} required />
-      <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-      <button type="submit">Register</button>
+    <div className="container col-10 col-sm-6 col-md-4 col-lg-3 mt-5">
+    <form onSubmit={handleSubmit} className="form-signin card p-4">
+      <h2 className="text-center">Register</h2>
+      <br/>
+      <div className="form-group">
+        <label htmlFor="username">Username</label>
+        <input 
+          type="text" 
+          className="form-control" 
+          id="username" 
+          placeholder="Enter your username" 
+          onChange={(e) => setUsername(e.target.value)} 
+          required 
+        />
+      </div>
+      <br/>
+      <div className="form-group">
+        <label htmlFor="password">Password</label>
+        <input 
+          type="password" 
+          className="form-control" 
+          id="password" 
+          placeholder="Enter your password" 
+          onChange={(e) => setPassword(e.target.value)} 
+          required 
+        />
+        <br/>
+      </div>
+      <button type="submit" className="btn btn-primary btn-block">Register</button>
     </form>
+    <div className="text-center mt-3">
+            <span>Already have an account? </span>
+            <Link to="/login">Login into your account</Link>
+          </div>
+  </div>
   );
 };
 
