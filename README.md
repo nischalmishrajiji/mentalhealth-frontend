@@ -1,3 +1,10 @@
+# Note
+
+While running the frontend make following changes in **app.js** file as per the need, enable only one of the below code lines 
+
+// const API_URL = 'http://192.168.0.6:3000/api'; // If you are running frontend in local
+const API_URL = 'http://'+window.location.hostname+':3000/api'; // If you want to create build
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
