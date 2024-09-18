@@ -6,6 +6,8 @@ import Login from './components/Login';
 import DailyLogForm from './components/DailyLogForm';
 import DailyLogView from './components/DailyLogView';
 import Navigation from './components/Navigation';
+import Home from './components/Home';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
@@ -34,14 +36,7 @@ const App = () => {
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} /> {/* Pass setter */}
           <Route path="/daily-log" element={<DailyLogForm />} />
           <Route path="/view-logs" element={<DailyLogView />} />
-          <Route 
-            path="/" 
-            element={
-              <div>
-                <h1>Welcome to the Mental Health App</h1>
-              </div>
-            } 
-          />
+          <Route path="/" element={<Home />} />
         </Routes>
       </div>
     </Router>
